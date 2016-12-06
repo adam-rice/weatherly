@@ -7,11 +7,12 @@ body {
 #logo {
   margin-top: 150px;
   text-align: center;
+  text-shadow: -1px 0 $border-color, 0 1px $border-color, 1px 0 $border-color, 0 -1px $border-color;
 }
 
 h1 {
-  font-family: 'Indie Flower', cursive;
-  font-size: 5em;
-  color: $border-color;
+  color: $secondary-color;
+  font-family: 'Alegreya', serif;
+  font-size: 4em;
   font-weight: 900;
 }
