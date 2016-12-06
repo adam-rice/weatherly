@@ -13,6 +13,7 @@ h1 {
   font-family: 'Alegreya', serif;
   font-size: 4em;
   font-weight: 900;
+  margin-bottom: 40px;
   text-shadow: -1px 0 $border-color, 0 1px $border-color, 1px 0 $border-color, 0 -1px $border-color;
 }
 
@@ -20,12 +21,18 @@ input {
   border: none;
   border-bottom: 2px solid $border-color;
   // border-radius: 4px;
+  // display: inline-block;
   font-size: 1em;
   margin: 20px;
   outline: none;
   height: 30px;
   width: 400px;
   text-indent: 15px;
+}
+
+#searchBtn {
+  display: inline-block;
+
 }
 
 button {
