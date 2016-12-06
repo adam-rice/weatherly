@@ -3,3 +3,15 @@
 body {
   background-color: $primary-color;
 }
+
+#logo {
+  margin-top: 150px;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Indie Flower', cursive;
+  font-size: 5em;
+  color: $border-color;
+  font-weight: 900;
+}
