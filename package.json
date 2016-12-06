@@ -1,7 +1,7 @@
 {
-  "name": "react-starter-kit",
+  "name": "weatherly",
   "version": "1.0.0",
-  "description": "A good enough starter kit for a React project, I guess.",
+  "description": "Turing School project - Anna Psitos & Adam Rice",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/turingschool-examples/react-starter-kit.git"
   },
-  "author": "Steve Kinney",
+  "author": "Anna Psitos & Adam Rice",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/turingschool-examples/react-starter-kit/issues"
