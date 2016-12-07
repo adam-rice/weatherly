@@ -1,9 +1,8 @@
-require('../CSS/reset');
-require('../CSS/styles');
 const React = require('react');
 const ReactDOM = require('react-dom');
 const $ = require('jquery');
 var Header = require('./components/Header');
+var Body = require('./components/Body');
 
 
 $.get('http://weatherly-api.herokuapp.com/api/weather').then(function(data) {
@@ -12,14 +11,15 @@ $.get('http://weatherly-api.herokuapp.com/api/weather').then(function(data) {
   });
 });
 
-class Body extends React.Component {
+class Weatherly extends React.Component {
   render() {
     return (
       <section id="header">
         <Header />
+        <Body />
       </section>
     )
   }
 }
 
-ReactDOM.render(<Body />, document.getElementById('application'));
+ReactDOM.render(<Weatherly />, document.getElementById('application'));
