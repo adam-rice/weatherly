@@ -18,7 +18,7 @@ class Weatherly extends React.Component {
         <Header />
         <Body />
       </section>
-    )
+    );
   }
 }
 
