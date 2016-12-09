@@ -78,11 +78,18 @@ h6.thunderstorm {
   background-image: url('http://icons.wxug.com/i/c/f/storm.gif');
 }
 
-h6.windy {
+h6.windy, h6.cloudy, h6.foggy {
   height: 40px;
   width: 40px;
   margin: 0 auto;
   background-image: url('http://icons.wxug.com/i/c/f/cloudy.gif');
+}
+
+h6.rain {
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
+  background-image: url('http://icons.wxug.com/i/c/f/rain.gif');
 }
 
 h6.snow {

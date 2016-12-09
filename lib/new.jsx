@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 var $ = require('jquery');
 
+// i.replace(/\-/g,' ')...
+
 class Main extends React.Component {
   constructor() {
       super();
@@ -9,12 +11,6 @@ class Main extends React.Component {
         location: '',
         weather: null,
       };
-  }
-
-  tempStyling() {
-    if (this.weather.weatherType.type === 'sunny' ) {
-      return '-sunny';
-    }
   }
 
   updateLocation(e) {
@@ -27,7 +23,7 @@ class Main extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ location: localStorage.getItem('location') || '' }, () => this.findWeather())
+    this.setState({ location: localStorage.getItem('location') || '' }, () => this.findWeather());
   }
 
   findWeather(e) {
@@ -60,19 +56,7 @@ class Main extends React.Component {
             }}>
             Get Weather
           </button>
-          {/* <section id="body">
-            <article id="today"></article>
-            <article id="todaySummary"></article>
-            <section id="week">
-              <article id="dayOne" className="notToday"></article>
-              <article id="dayTwo" className="notToday"></article>
-              <article id="dayThree" className="notToday"></article>
-              <article id="dayFour" className="notToday"></article>
-              <article id="dayFive" className="notToday"></article>
-              <article id="daySix" className="notToday"></article>
-              <article id="daySeven" className="notToday"></article>
-            </section>
-           </section> */}
+          <h1>{this.state.location}</h1>
           <WeatherCards weather={this.state.weather} />
         </section>
       </div>
@@ -111,7 +95,7 @@ const WeatherCards = (props) => {
 
 const Weather = (props) => {
   let { location, date, weatherType, temp } = props
-  let chance = weatherType.chance*100;
+  let chance = Math.floor(weatherType.chance*100);
   return(
     <div>
       <article className={weatherType.type}>
