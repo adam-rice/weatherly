@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-var $ = require('jquery')
+var $ = require('jquery');
 
 class Main extends React.Component {
   constructor() {
@@ -8,7 +8,7 @@ class Main extends React.Component {
       this.state = {
         location: '',
         weather: null,
-      }
+      };
   }
 
   updateLocation(e) {
@@ -21,26 +21,24 @@ class Main extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ location: localStorage.getItem('location') || '' }, () => this.persistLastLocation())
+    this.setState({ location: localStorage.getItem('location') || '' }, () => this.findWeather())
   }
 
-  // componentDidMount() {
-  //   this.setState({
-  //     ideas: localStorage.getItem('ideas') ? JSON.parse(localStorage.getItem('ideas')) : []
-  //   })
-  // }
-
   findWeather(e) {
-    $.get(this.props.source + this.state.location, (results) => {
-      this.setState({ weather: results }, localStorage.setItem('location', this.state.location));
-    });
-    this.setState({ location: '' });
-    searchInput.value = '';
+    // if (this.state.location) {
+      $.get(this.props.source + this.state.location).then(weatherInfo => {
+          this.setState({weather: weatherInfo.slice(0, 7)});
+        });
+      // }
+    this.persistLastLocation();
   }
 
   render() {
     return(
       <div className='WeatherReport'>
+        <div>
+          <h1 id="logo">weatherly</h1>
+        </div>
         <section>
           <input
             className="searchInput"
@@ -94,6 +92,7 @@ const WeatherCards = (props) => {
 
 const Weather = (props) => {
   let { location, date, temp } = props
+
   return(
     <div>
       <article>

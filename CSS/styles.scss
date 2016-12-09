@@ -1,12 +1,11 @@
 @import "variables";
 
-body {
-  // background-color: $primary-color;
+.WeatherReport {
+  text-align: center;
 }
 
-#header {
-  margin-top: 150px;
-  text-align: center;
+#logo {
+  margin-top: 50px;
 }
 
 h1 {
