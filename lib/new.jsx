@@ -7,7 +7,7 @@ class Main extends React.Component {
       super();
       this.state = {
         location: '',
-        weather: [],
+        weather: null,
       }
   }
 
@@ -56,13 +56,23 @@ const WeatherCards = (props) => {
   }
   return (
     <div className='Weather-Card'>
-      {weather.map((card) => <div>
-        <li>{card.location}</li>
-        <li>{card.temp.high}</li>
-        <li>{card.temp.low}</li>
+      {weather.map((card) => <div key={card.date}>
+        <Weather {...card} />
       </div>)}
     </div>
   )
 };
+
+const Weather = (props) => {
+  let { location, date, temp } = props
+  return(
+    <div>
+      <article>
+        {location}
+        {date}
+      </article>
+    </div>
+  )
+}
 
 ReactDOM.render(<Main source='https://weatherly-api.herokuapp.com/api/weather/'/>, document.getElementById('application'));
