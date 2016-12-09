@@ -11,6 +11,12 @@ class Main extends React.Component {
       };
   }
 
+  tempStyling() {
+    if (this.weather.weatherType.type === 'sunny' ) {
+      return '-sunny';
+    }
+  }
+
   updateLocation(e) {
     const searchValue = e.target.value;
     this.setState({ location: searchValue });
@@ -104,13 +110,13 @@ const WeatherCards = (props) => {
 };
 
 const Weather = (props) => {
-  let { location, date, temp } = props
-
+  let { location, date, weatherType, temp } = props
   return(
-    <div className="card">
-      <article>
+    <div>
+      <article className={weatherType.type}>
         <h5>{date}</h5>
-        <h5>{temp.high}</h5>
+        <h5>The high will be {temp.high}.</h5>
+        <h5>The low will be{temp.low}.</h5>
       </article>
     </div>
   )
