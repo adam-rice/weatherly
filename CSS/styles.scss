@@ -51,8 +51,9 @@ button {
 }
 
 article {
+  padding: 10px;
   margin: 20px auto;
-  background-color: $text-color;
+  background-color: $thunderstorm;
   color: $border-color;
   border: 4px solid $border-color;
   height: 100px;
@@ -60,5 +61,13 @@ article {
 }
 
 .sunny {
-  background-color: orange;
+  background-color: $sunny;
+}
+
+.snow {
+  background-color: $primary-color;
+}
+
+.windy {
+  background-color: $hover-color;
 }
