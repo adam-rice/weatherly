@@ -12,22 +12,38 @@ class Main extends React.Component {
   }
 
   updateLocation(e) {
-    const searchValue = e.currentTarget.value;
+    const searchValue = e.target.value;
     this.setState({ location: searchValue });
   }
 
+  persistLastLocation() {
+    localStorage.setItem('location', this.state.location);
+  }
+
+  componentDidMount() {
+    this.setState({ location: localStorage.getItem('location') || '' }, () => this.persistLastLocation())
+  }
+
+  // componentDidMount() {
+  //   this.setState({
+  //     ideas: localStorage.getItem('ideas') ? JSON.parse(localStorage.getItem('ideas')) : []
+  //   })
+  // }
+
   findWeather(e) {
     $.get(this.props.source + this.state.location, (results) => {
-      this.setState({ weather: results }, localStorage.setItem('location', this.state.location))
+      this.setState({ weather: results }, localStorage.setItem('location', this.state.location));
     });
     this.setState({ location: '' });
+    searchInput.value = '';
   }
 
   render() {
     return(
       <div className='WeatherReport'>
-        <section className=''>
+        <section>
           <input
+            className="searchInput"
             type='text'
             placeholder='Search'
             onChange={ (e) => {
@@ -38,8 +54,21 @@ class Main extends React.Component {
             onClick={ (e) => {
               this.findWeather(e);
             }}>
-            Locate
+            Get Weather
           </button>
+          {/* <section id="body">
+            <article id="today"></article>
+            <article id="todaySummary"></article>
+            <section id="week">
+              <article id="dayOne" className="notToday"></article>
+              <article id="dayTwo" className="notToday"></article>
+              <article id="dayThree" className="notToday"></article>
+              <article id="dayFour" className="notToday"></article>
+              <article id="dayFive" className="notToday"></article>
+              <article id="daySix" className="notToday"></article>
+              <article id="daySeven" className="notToday"></article>
+            </section>
+           </section> */}
           <WeatherCards weather={this.state.weather} />
         </section>
       </div>
