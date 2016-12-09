@@ -118,10 +118,17 @@ const Weather = (props) => {
         <h5>{date}</h5>
         <h5>The high will be {temp.high}.</h5>
         <h5>The low will be {temp.low}.</h5>
+        <h6 className={thing(weatherType.type)}></h6>
         <h5>Likelyhood of {weatherType.type} is {chance}%</h5>
       </article>
     </div>
   )
+}
+
+function thing(x) {
+  if (x === 'thunder storms') {
+    return 'thunderstorm'
+  } else { return x }
 }
 
 ReactDOM.render(<Main source='https://weatherly-api.herokuapp.com/api/weather/'/>, document.getElementById('application'));

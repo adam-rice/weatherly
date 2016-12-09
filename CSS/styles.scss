@@ -64,6 +64,22 @@ article {
   background-color: $sunny;
 }
 
+h6.sunny{
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
+  // border: 2px solid black;
+  background-image: url('http://icons.wxug.com/i/c/f/sunny.gif');
+}
+
+h6.thunderstorm {
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
+  // border: 2px solid black;
+  background-image: url('http://icons.wxug.com/i/c/f/storm.gif');
+}
+
 .snow {
   background-color: $primary-color;
 }
