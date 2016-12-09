@@ -81,6 +81,19 @@ const WeatherCards = (props) => {
       <div>Please Enter a Location</div>
     );
   }
+  if (weather.length === 0) {
+    return (
+      <div>
+        <h3>Valid Locations:</h3>
+        <ul>
+          <li>Denver</li>
+          <li>Castle-Rock</li>
+          <li>San-Diego</li>
+          <li>San-Francisco</li>
+        </ul>
+      </div>
+    );
+  }
   return (
     <div className='Weather-Card'>
       {weather.map((card) => <div key={card.date}>
