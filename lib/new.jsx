@@ -25,11 +25,11 @@ class Main extends React.Component {
   }
 
   findWeather(e) {
-    // if (this.state.location) {
+    if (this.state.location) {
       $.get(this.props.source + this.state.location).then(weatherInfo => {
           this.setState({weather: weatherInfo.slice(0, 7)});
         });
-      // }
+      }
     this.persistLastLocation();
   }
 
@@ -83,7 +83,7 @@ const WeatherCards = (props) => {
   }
   if (weather.length === 0) {
     return (
-      <div>
+      <section>
         <h3>Valid Locations:</h3>
         <ul>
           <li>Denver</li>
@@ -91,7 +91,7 @@ const WeatherCards = (props) => {
           <li>San-Diego</li>
           <li>San-Francisco</li>
         </ul>
-      </div>
+      </section>
     );
   }
   return (
