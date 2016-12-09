@@ -107,10 +107,10 @@ const Weather = (props) => {
   let { location, date, temp } = props
 
   return(
-    <div>
+    <div className="card">
       <article>
-        {location}
-        {date}
+        <h5>{date}</h5>
+        <h5>{temp.high}</h5>
       </article>
     </div>
   )
