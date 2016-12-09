@@ -111,12 +111,14 @@ const WeatherCards = (props) => {
 
 const Weather = (props) => {
   let { location, date, weatherType, temp } = props
+  let chance = weatherType.chance*100;
   return(
     <div>
       <article className={weatherType.type}>
         <h5>{date}</h5>
         <h5>The high will be {temp.high}.</h5>
-        <h5>The low will be{temp.low}.</h5>
+        <h5>The low will be {temp.low}.</h5>
+        <h5>Likelyhood of {weatherType.type} is {chance}%</h5>
       </article>
     </div>
   )
