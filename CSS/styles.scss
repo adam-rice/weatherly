@@ -1,16 +1,15 @@
 @import "variables";
 
-body {
-  // background-color: $primary-color;
-}
-
-#header {
-  margin-top: 150px;
+.WeatherReport {
   text-align: center;
 }
 
+#logo {
+  margin-top: 50px;
+}
+
 h1 {
-  color: $secondary-color;
+  // color: $secondary-color;
   font-family: 'Alegreya', serif;
   font-size: 4em;
   font-weight: 900;
@@ -49,4 +48,61 @@ button {
     color: $text-color;
     cursor: pointer;
   }
+}
+
+article {
+  padding: 10px;
+  margin: 20px auto;
+  background-color: $thunderstorm;
+  color: $border-color;
+  border: 4px solid $border-color;
+  height: 100px;
+  width: 300px;
+}
+
+.sunny {
+  background-color: $sunny;
+}
+
+h6.sunny{
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
+  background-image: url('http://icons.wxug.com/i/c/f/sunny.gif');
+}
+
+h6.thunderstorm {
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
+  background-image: url('http://icons.wxug.com/i/c/f/storm.gif');
+}
+
+h6.windy, h6.cloudy, h6.foggy {
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
+  background-image: url('http://icons.wxug.com/i/c/f/cloudy.gif');
+}
+
+h6.rain {
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
+  background-image: url('http://icons.wxug.com/i/c/f/rain.gif');
+}
+
+h6.snow {
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
+  background-image: url('http://icons.wxug.com/i/c/f/snow.gif');
+}
+
+.snow {
+  background-color: $primary-color;
+}
+
+.windy {
+  background-color: $hover-color;
 }

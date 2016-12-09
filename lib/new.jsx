@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-var $ = require('jquery')
+var $ = require('jquery');
+
+// i.replace(/\-/g,' ')...
 
 class Main extends React.Component {
   constructor() {
@@ -8,7 +10,7 @@ class Main extends React.Component {
       this.state = {
         location: '',
         weather: null,
-      }
+      };
   }
 
   updateLocation(e) {
@@ -21,26 +23,24 @@ class Main extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ location: localStorage.getItem('location') || '' }, () => this.persistLastLocation())
+    this.setState({ location: localStorage.getItem('location') || '' }, () => this.findWeather());
   }
 
-  // componentDidMount() {
-  //   this.setState({
-  //     ideas: localStorage.getItem('ideas') ? JSON.parse(localStorage.getItem('ideas')) : []
-  //   })
-  // }
-
   findWeather(e) {
-    $.get(this.props.source + this.state.location, (results) => {
-      this.setState({ weather: results }, localStorage.setItem('location', this.state.location));
-    });
-    this.setState({ location: '' });
-    searchInput.value = '';
+    if (this.state.location) {
+      $.get(this.props.source + this.state.location).then(weatherInfo => {
+          this.setState({weather: weatherInfo.slice(0, 7)});
+        });
+      }
+    this.persistLastLocation();
   }
 
   render() {
     return(
       <div className='WeatherReport'>
+        <div>
+          <h1 id="logo">weatherly</h1>
+        </div>
         <section>
           <input
             className="searchInput"
@@ -56,19 +56,7 @@ class Main extends React.Component {
             }}>
             Get Weather
           </button>
-          {/* <section id="body">
-            <article id="today"></article>
-            <article id="todaySummary"></article>
-            <section id="week">
-              <article id="dayOne" className="notToday"></article>
-              <article id="dayTwo" className="notToday"></article>
-              <article id="dayThree" className="notToday"></article>
-              <article id="dayFour" className="notToday"></article>
-              <article id="dayFive" className="notToday"></article>
-              <article id="daySix" className="notToday"></article>
-              <article id="daySeven" className="notToday"></article>
-            </section>
-           </section> */}
+          <h1>{this.state.location}</h1>
           <WeatherCards weather={this.state.weather} />
         </section>
       </div>
@@ -83,6 +71,19 @@ const WeatherCards = (props) => {
       <div>Please Enter a Location</div>
     );
   }
+  if (weather.length === 0) {
+    return (
+      <section>
+        <h3>Valid Locations:</h3>
+        <ul>
+          <li>Denver</li>
+          <li>Castle-Rock</li>
+          <li>San-Diego</li>
+          <li>San-Francisco</li>
+        </ul>
+      </section>
+    );
+  }
   return (
     <div className='Weather-Card'>
       {weather.map((card) => <div key={card.date}>
@@ -93,15 +94,25 @@ const WeatherCards = (props) => {
 };
 
 const Weather = (props) => {
-  let { location, date, temp } = props
+  let { location, date, weatherType, temp } = props
+  let chance = Math.floor(weatherType.chance*100);
   return(
     <div>
-      <article>
-        {location}
-        {date}
+      <article className={weatherType.type}>
+        <h5>{date}</h5>
+        <h5>The high will be {temp.high}&#176;.</h5>
+        <h5>The low will be {temp.low}&#176;.</h5>
+        <h6 className={thing(weatherType.type)}></h6>
+        <h5>Likelihood of {weatherType.type} is {chance}%</h5>
       </article>
     </div>
   )
+}
+
+function thing(x) {
+  if (x === 'thunder storms') {
+    return 'thunderstorm'
+  } else { return x }
 }
 
 ReactDOM.render(<Main source='https://weatherly-api.herokuapp.com/api/weather/'/>, document.getElementById('application'));
