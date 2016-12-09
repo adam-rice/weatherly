@@ -116,10 +116,10 @@ const Weather = (props) => {
     <div>
       <article className={weatherType.type}>
         <h5>{date}</h5>
-        <h5>The high will be {temp.high}.</h5>
-        <h5>The low will be {temp.low}.</h5>
+        <h5>The high will be {temp.high}&#176;.</h5>
+        <h5>The low will be {temp.low}&#176;.</h5>
         <h6 className={thing(weatherType.type)}></h6>
-        <h5>Likelyhood of {weatherType.type} is {chance}%</h5>
+        <h5>Likelihood of {weatherType.type} is {chance}%</h5>
       </article>
     </div>
   )
