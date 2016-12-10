@@ -40,8 +40,6 @@ input {
   font-weight: 400;
   border: none;
   border-bottom: 2px solid $border-color;
-  // border-radius: 4px;
-  // display: inline-block;
   font-size: 2em;
   margin: 20px;
   outline: none;
@@ -80,42 +78,29 @@ article {
   width: 300px;
 }
 
-.sunny {
-  background-color: $sunny;
-}
-
-h6.sunny{
+h6.sunny, h6.thunderstorms, h6.foggy, h6.windy, h6.cloudy, h6.rain, h6.snow {
   height: 40px;
   width: 40px;
   margin: 0 auto;
+}
+
+h6.sunny{
   background-image: url('http://icons.wxug.com/i/c/f/sunny.gif');
 }
 
 h6.thunderstorms {
-  height: 40px;
-  width: 40px;
-  margin: 0 auto;
   background-image: url('http://icons.wxug.com/i/c/f/storm.gif');
 }
 
 h6.windy, h6.cloudy, h6.foggy {
-  height: 40px;
-  width: 40px;
-  margin: 0 auto;
   background-image: url('http://icons.wxug.com/i/c/f/cloudy.gif');
 }
 
 h6.rain {
-  height: 40px;
-  width: 40px;
-  margin: 0 auto;
   background-image: url('http://icons.wxug.com/i/c/f/rain.gif');
 }
 
 h6.snow {
-  height: 40px;
-  width: 40px;
-  margin: 0 auto;
   background-image: url('http://icons.wxug.com/i/c/f/snow.gif');
 }
 
@@ -125,4 +110,8 @@ h6.snow {
 
 .windy {
   background-color: $windy;
+}
+
+.sunny {
+  background-color: $sunny;
 }
