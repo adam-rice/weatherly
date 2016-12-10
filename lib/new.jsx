@@ -68,7 +68,7 @@ const WeatherCards = (props) => {
   let { weather } = (props);
   if(!weather) {
     return (
-      <div>Please Enter a Location</div>
+      <div id="welcome">Welcome to Weatherly!<br />Let us help you plan your day.</div>
     );
   }
   if (weather.length === 0) {
@@ -77,16 +77,17 @@ const WeatherCards = (props) => {
         <h3>Valid Locations:</h3>
         <ul>
           <li>Denver</li>
-          <li>Castle-Rock</li>
-          <li>San-Diego</li>
-          <li>San-Francisco</li>
+          <li>Castle Rock</li>
+          <li>San Diego</li>
+          <li>San Fransico</li>
         </ul>
       </section>
     );
   }
   return (
     <div className='Weather-Card'>
-      {weather.map((card) => <div key={card.date}>
+      {weather.map((card) =>
+        <div key={card.date}>
         <Weather {...card} />
       </div>)}
     </div>
@@ -100,10 +101,10 @@ const Weather = (props) => {
     <div>
       <article className={weatherType.type}>
         <h5>{date}</h5>
-        <h5>The high will be {temp.high}&#176;.</h5>
-        <h5>The low will be {temp.low}&#176;.</h5>
+        <h5>The high will be {temp.high}&#176;</h5>
+        <h5>The low will be {temp.low}&#176;</h5>
         <h6 className={thing(weatherType.type)}></h6>
-        <h5>Likelihood of {weatherType.type} is {chance}%</h5>
+        <h5>Likelihood of {thing(weatherType.type)} is {chance}%</h5>
       </article>
     </div>
   )
@@ -111,7 +112,7 @@ const Weather = (props) => {
 
 function thing(x) {
   if (x === 'thunder storms') {
-    return 'thunderstorm'
+    return 'thunderstorms'
   } else { return x }
 }
 
