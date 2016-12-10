@@ -43,6 +43,7 @@ class Main extends React.Component {
         </div>
         <section>
           <input
+            aria-label="search-field, enter a city"
             className="searchInput"
             type='text'
             placeholder='Search'
@@ -103,7 +104,7 @@ const Weather = (props) => {
         <h5>{date}</h5>
         <h5>The high will be {temp.high}&#176;</h5>
         <h5>The low will be {temp.low}&#176;</h5>
-        <h6 className={thing(weatherType.type)}></h6>
+        <p className={thing(weatherType.type)}></p>
         <h5>Likelihood of {thing(weatherType.type)} is {chance}%</h5>
       </article>
     </div>

@@ -78,29 +78,29 @@ article {
   width: 300px;
 }
 
-h6.sunny, h6.thunderstorms, h6.foggy, h6.windy, h6.cloudy, h6.rain, h6.snow {
+p.sunny, p.thunderstorms, p.foggy, p.windy, p.cloudy, p.rain, p.snow {
   height: 40px;
   width: 40px;
   margin: 0 auto;
 }
 
-h6.sunny{
+p.sunny{
   background-image: url('http://icons.wxug.com/i/c/f/sunny.gif');
 }
 
-h6.thunderstorms {
+p.thunderstorms {
   background-image: url('http://icons.wxug.com/i/c/f/storm.gif');
 }
 
-h6.windy, h6.cloudy, h6.foggy {
+p.windy, p.cloudy, p.foggy {
   background-image: url('http://icons.wxug.com/i/c/f/cloudy.gif');
 }
 
-h6.rain {
+p.rain {
   background-image: url('http://icons.wxug.com/i/c/f/rain.gif');
 }
 
-h6.snow {
+p.snow {
   background-image: url('http://icons.wxug.com/i/c/f/snow.gif');
 }
 
