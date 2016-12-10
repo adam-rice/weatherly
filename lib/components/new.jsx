@@ -52,7 +52,6 @@ class Main extends React.Component {
               this.updateLocation(e);
             }} />
           <button
-            className='search'
             onClick={ (e) => {
               this.findWeather(e);
             }}>
