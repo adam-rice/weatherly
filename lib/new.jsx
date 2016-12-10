@@ -74,12 +74,12 @@ const WeatherCards = (props) => {
   if (weather.length === 0) {
     return (
       <section>
-        <h3>Valid Locations:</h3>
+        <h3 className="invalid">Valid Locations:</h3>
         <ul>
-          <li>Denver</li>
-          <li>Castle Rock</li>
-          <li>San Diego</li>
-          <li>San Fransico</li>
+          <li className="invalid">Denver</li>
+          <li className="invalid">Castle Rock</li>
+          <li className="invalid">San Diego</li>
+          <li className="invalid">San Fransico</li>
         </ul>
       </section>
     );
