@@ -4,14 +4,14 @@ var $ = require('jquery');
 
 class Main extends React.Component {
   constructor() {
-      super();
-      this.state = {
-        location: '',
-        weather: null,
-      };
+    super();
+    this.state = {
+      location: '',
+      weather: null,
+    };
   }
 
-  updateLocation(e) {
+  handleChange(e) {
     const searchValue = e.target.value;
     this.setState({ location: searchValue });
   }
@@ -21,14 +21,14 @@ class Main extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ location: localStorage.getItem('location') || '' }, () => this.findWeather());
+    this.setState({ location: localStorage.getItem('location') || '' }, () => this.handleClick());
   }
 
-  findWeather(e) {
+  handleClick() {
     let rawInput = this.state.location;
     let userInput = rawInput.replace(/\s+/g, '-').toLowerCase();
     if (userInput) {
-      $.get(this.props.source + userInput).then(weatherInfo => {
+      $.get(this.props.source + fixCity(userInput)).then(weatherInfo => {
           this.setState({weather: weatherInfo.slice(0, 7)});
         });
       }
@@ -49,12 +49,11 @@ class Main extends React.Component {
             type='text'
             placeholder='Search'
             onChange={ (e) => {
-              this.updateLocation(e);
+              this.handleChange(e);
             }} />
           <button
-            className='search'
             onClick={ (e) => {
-              this.findWeather(e);
+              this.handleClick(e);
             }}>
             Get Weather
           </button>
@@ -143,6 +142,12 @@ function transformWeatherType(type) {
   } else if (type === 'foggy') {
     return 'fog'
   } else { return type }
+}
+
+function fixCity(city) {
+  if (city === 'san-francisco') {
+    return 'san-fransico'
+  } else {return city}
 }
 
 ReactDOM.render(<Main source='https://weatherly-api.herokuapp.com/api/weather/'/>, document.getElementById('application'));

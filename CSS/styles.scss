@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixin";
 
 body {
   background-color: $background;
@@ -10,8 +11,6 @@ body {
 
 h1, h2 {
   color: $logo-color;
-  font-weight: 900;
-  font-family: 'Alegreya', serif;
   font-size: 4em;
   margin-bottom: 40px;
   margin-top: 50px;
@@ -25,17 +24,13 @@ h2 {
 
 .welcome {
   color: $hover-color;
-  font-family: 'Alegreya', serif;
   font-size: 1.5em;
-  font-weight: 900;
   letter-spacing: 1.3px;
   margin: 15px;
 }
 
 .invalid {
-  font-family: 'Alegreya', serif;
   font-size: 1.5em;
-  font-weight: 400;
 }
 
 .high {
@@ -46,12 +41,10 @@ input {
   background-color: $background;
   border: none;
   border-bottom: 2px solid $border-color;
-  font-family: 'Alegreya', serif;
-  font-weight: 400;
   font-size: 2em;
   margin: 20px;
   outline: none;
-  height: 30px;
+  height: 55px;
   width: 400px;
   text-indent: 15px;
 }
@@ -61,8 +54,6 @@ button {
   border: none;
   border-radius: 4px;
   color: $border-color;
-  font-family: 'Alegreya', serif;
-  font-weight: 400;
   font-size: 1em;
   outline: none;
   height: 35px;
@@ -77,8 +68,6 @@ button {
 article {
   border: 4px solid $border-color;
   color: $text-color;
-  font-family: 'Alegreya', serif;
-  font-weight: 400;
   margin: 20px auto;
   padding: 10px;
   height: 150px;
@@ -88,14 +77,19 @@ article {
 .date {
   color: $border-color;
   float: right;
-  font-weight: 900;
   font-size: 1.2em;
 }
 
+.date, .welcome, h1, h2 {
+  @include heavyFont(900, $font-family);
+}
+
+article, button, input, .invalid {
+  @include lightFont(400, $font-family);
+}
+
 p.clear, p.thunderstorms, p.fog, p.wind, p.clouds, p.rain, p.snow {
-  height: 40px;
-  width: 40px;
-  margin: 10px auto;
+  @include img(40px, '10px auto');
 }
 
 p.clear {

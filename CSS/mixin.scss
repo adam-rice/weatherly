@@ -1,0 +1,15 @@
+@mixin heavyFont($weight, $family) {
+  font-weight: $weight;
+  font-family: $family;
+}
+
+@mixin lightFont($weight, $family) {
+  font-weight: $weight;
+  font-family: $family;
+}
+
+@mixin img($size, $margin) {
+  height: $size;
+  width: $size;
+  margin: $margin;
+}
