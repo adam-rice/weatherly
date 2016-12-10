@@ -1,0 +1,21 @@
+$heavy-font: 900;
+$light-font: 400;
+$family: 'Alegreya', serif;
+$box: 40px;
+$margin: 10px auto;
+
+@mixin heavyFont {
+  font-weight: $heavy-font;
+  font-family: $family;
+}
+
+@mixin lightFont {
+  font-weight: $light-font;
+  font-family: $family;
+}
+
+@mixin img {
+  height: $box;
+  width: $box;
+  margin: $margin;
+}
