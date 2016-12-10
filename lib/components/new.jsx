@@ -38,7 +38,10 @@ class Main extends React.Component {
   render() {
     return(
       <div className='WeatherReport'>
-        <h1 id="logo">weatherly</h1>
+        <h1 id="logo"
+          tabIndex="0"
+          aria-label="Welcome to Weatherly! Let us help you plan your day.">
+          weatherly</h1>
         <section>
           <input
             aria-label="search-field, enter a city"
@@ -55,7 +58,7 @@ class Main extends React.Component {
             }}>
             Get Weather
           </button>
-          <h2>{this.state.location}</h2>
+          <h2 tabIndex="0">{this.state.location}</h2>
           <WeatherCards weather={this.state.weather} />
         </section>
       </div>
@@ -76,12 +79,12 @@ const WeatherCards = (props) => {
   if (weather.length === 0) {
     return (
       <section>
-        <h3 className="invalid">Valid Locations:</h3>
+        <h3 className="invalid" tabIndex="0">Valid Locations:</h3>
         <ul>
-          <li className="invalid">Denver</li>
-          <li className="invalid">Castle Rock</li>
-          <li className="invalid">San Diego</li>
-          <li className="invalid">San Fransico</li>
+          <li className="invalid" tabIndex="0">Denver</li>
+          <li className="invalid" tabIndex="0">Castle Rock</li>
+          <li className="invalid" tabIndex="0">San Diego</li>
+          <li className="invalid" tabIndex="0">San Fransico</li>
         </ul>
       </section>
     );
@@ -96,18 +99,17 @@ const WeatherCards = (props) => {
   )
 };
 
-
 const Weather = (props) => {
   let { location, date, weatherType, temp } = props
   let chance = Math.floor(weatherType.chance*100);
   return(
     <div>
       <article className={measureWeather(temp)}>
-        <h5 className="date">{date}</h5>
-        <h5 className="high">The high will be {temp.high}&#176;</h5>
-        <h5>The low will be {temp.low}&#176;</h5>
-        <p className={transformWeatherType(weatherType.type)}></p>
-        <h5>Likelihood of {transformWeatherType(weatherType.type)} is {chance}%</h5>
+        <h5 className="date" tabIndex="0">{date}</h5>
+        <h5 className="high" tabIndex="0">The high will be {temp.high}&#176;</h5>
+        <h5 tabIndex="0">The low will be {temp.low}&#176;</h5>
+        <p className={transformWeatherType(weatherType.type)} alt="weather type image"></p>
+        <h5 tabIndex="0">Likelihood of {transformWeatherType(weatherType.type)} is {chance}%</h5>
       </article>
     </div>
   )
