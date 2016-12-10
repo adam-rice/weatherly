@@ -56,7 +56,7 @@ class Main extends React.Component {
             }}>
             Get Weather
           </button>
-          <h1>{this.state.location}</h1>
+          <h2>{this.state.location}</h2>
           <WeatherCards weather={this.state.weather} />
         </section>
       </div>
@@ -68,7 +68,7 @@ const WeatherCards = (props) => {
   let { weather } = (props);
   if(!weather) {
     return (
-      <div id="welcome">Welcome to Weatherly!<br />Let us help you plan your day.</div>
+      <div id="welcome">Welcome to Weatherly! Let us help you plan your day.</div>
     );
   }
   if (weather.length === 0) {

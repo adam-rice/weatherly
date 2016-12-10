@@ -12,15 +12,19 @@
   color: $hover-color;
   font-family: 'Alegreya', serif;
   font-size: 1.5em;
-  letter-spacing: 2.5px;
+  letter-spacing: 1.5px;
 }
 
-h1 {
+h1, h2 {
   color: $secondary-color;
   font-family: 'Alegreya', serif;
   font-size: 4em;
   margin-bottom: 40px;
   text-shadow: -1px 0 $border-color, 0 1px $border-color, 1px 0 $border-color, 0 -1px $border-color;
+}
+
+h2 {
+  color: $border-color;
 }
 
 input {
