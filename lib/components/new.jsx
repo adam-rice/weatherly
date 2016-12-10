@@ -96,12 +96,13 @@ const WeatherCards = (props) => {
   )
 };
 
+
 const Weather = (props) => {
   let { location, date, weatherType, temp } = props
   let chance = Math.floor(weatherType.chance*100);
   return(
     <div>
-      <article className={weatherType.type}>
+      <article className={measureWeather(temp)}>
         <h5 className="date">{date}</h5>
         <h5 className="high">The high will be {temp.high}&#176;</h5>
         <h5>The low will be {temp.low}&#176;</h5>
@@ -110,6 +111,22 @@ const Weather = (props) => {
       </article>
     </div>
   )
+};
+
+function measureWeather(temp) {
+  let average = (temp.high+temp.low)/2
+  if (average > 75) {
+    return 'hot';
+  }
+  if (average <= 75 && average >= 51) {
+    return 'warm';
+  }
+  if (average <= 50 && average >= 26) {
+    return 'cool';
+  }
+  if (average <= 25) {
+    return 'cold';
+  }
 }
 
 function transformWeatherType(type) {
