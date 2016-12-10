@@ -56,7 +56,7 @@ class Main extends React.Component {
             }}>
             Get Weather
           </button>
-          <h1>{this.state.location}</h1>
+          <h2>{this.state.location}</h2>
           <WeatherCards weather={this.state.weather} />
         </section>
       </div>
@@ -68,18 +68,18 @@ const WeatherCards = (props) => {
   let { weather } = (props);
   if(!weather) {
     return (
-      <div id="welcome">Welcome to Weatherly!<br />Let us help you plan your day.</div>
+      <div id="welcome">Welcome to Weatherly! Let us help you plan your day.</div>
     );
   }
   if (weather.length === 0) {
     return (
       <section>
-        <h3>Valid Locations:</h3>
+        <h3 className="invalid">Valid Locations:</h3>
         <ul>
-          <li>Denver</li>
-          <li>Castle Rock</li>
-          <li>San Diego</li>
-          <li>San Fransico</li>
+          <li className="invalid">Denver</li>
+          <li className="invalid">Castle Rock</li>
+          <li className="invalid">San Diego</li>
+          <li className="invalid">San Fransico</li>
         </ul>
       </section>
     );
