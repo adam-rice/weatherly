@@ -24,7 +24,7 @@ class Main extends React.Component {
     this.setState({ location: localStorage.getItem('location') || '' }, () => this.handleClick());
   }
 
-  handleClick(e) {
+  handleClick() {
     let rawInput = this.state.location;
     let userInput = rawInput.replace(/\s+/g, '-').toLowerCase();
     if (userInput) {
