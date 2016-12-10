@@ -81,15 +81,15 @@ article {
 }
 
 .date, .welcome, h1, h2 {
-  @include heavyFont;
+  @include heavyFont(900, "'Alegreya', serif");
 }
 
 article, button, input, .invalid {
-  @include lightFont;
+  @include lightFont(400, "'Alegreya', serif");
 }
 
 p.clear, p.thunderstorms, p.fog, p.wind, p.clouds, p.rain, p.snow {
-  @include img;
+  @include img(40px, '10px auto');
 }
 
 p.clear {
