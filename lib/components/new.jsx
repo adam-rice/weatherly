@@ -104,16 +104,24 @@ const Weather = (props) => {
         <h5>{date}</h5>
         <h5>The high will be {temp.high}&#176;</h5>
         <h5>The low will be {temp.low}&#176;</h5>
-        <p className={thing(weatherType.type)}></p>
-        <h5>Likelihood of {thing(weatherType.type)} is {chance}%</h5>
+        <p className={transformWeatherType(weatherType.type)}></p>
+        <h5>Likelihood of {transformWeatherType(weatherType.type)} is {chance}%</h5>
       </article>
     </div>
   )
 }
 
-function thing(x) {
+function transformWeatherType(x) {
   if (x === 'thunder storms') {
     return 'thunderstorms'
+  } else if (x === 'cloudy') {
+    return 'clouds'
+  }  else if (x === 'sunny') {
+    return 'clear'
+  } else if (x === 'windy') {
+    return 'wind'
+  } else if (x === 'foggy') {
+    return 'fog'
   } else { return x }
 }
 
