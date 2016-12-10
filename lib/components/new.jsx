@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 var $ = require('jquery');
 
-// i.replace(/\-/g,' ')...
-
 class Main extends React.Component {
   constructor() {
       super();
@@ -27,8 +25,10 @@ class Main extends React.Component {
   }
 
   findWeather(e) {
-    if (this.state.location) {
-      $.get(this.props.source + this.state.location).then(weatherInfo => {
+    let rawInput = this.state.location;
+    let userInput = rawInput.replace(/\s+/g, '-').toLowerCase();
+    if (userInput) {
+      $.get(this.props.source + userInput).then(weatherInfo => {
           this.setState({weather: weatherInfo.slice(0, 7)});
         });
       }
@@ -38,11 +38,10 @@ class Main extends React.Component {
   render() {
     return(
       <div className='WeatherReport'>
-        <div>
-          <h1 id="logo">weatherly</h1>
-        </div>
+        <h1 id="logo">weatherly</h1>
         <section>
           <input
+            aria-label="search-field, enter a city"
             className="searchInput"
             type='text'
             placeholder='Search'
@@ -68,7 +67,10 @@ const WeatherCards = (props) => {
   let { weather } = (props);
   if(!weather) {
     return (
-      <div id="welcome">Welcome to Weatherly! Let us help you plan your day.</div>
+      <section>
+        <div className="welcome">Welcome to Weatherly!</div>
+        <div className="welcome">Let us help you plan your day.</div>
+      </section>
     );
   }
   if (weather.length === 0) {
@@ -100,20 +102,28 @@ const Weather = (props) => {
   return(
     <div>
       <article className={weatherType.type}>
-        <h5>{date}</h5>
-        <h5>The high will be {temp.high}&#176;</h5>
+        <h5 className="date">{date}</h5>
+        <h5 className="high">The high will be {temp.high}&#176;</h5>
         <h5>The low will be {temp.low}&#176;</h5>
-        <h6 className={thing(weatherType.type)}></h6>
-        <h5>Likelihood of {thing(weatherType.type)} is {chance}%</h5>
+        <p className={transformWeatherType(weatherType.type)}></p>
+        <h5>Likelihood of {transformWeatherType(weatherType.type)} is {chance}%</h5>
       </article>
     </div>
   )
 }
 
-function thing(x) {
-  if (x === 'thunder storms') {
+function transformWeatherType(type) {
+  if (type === 'thunder storms') {
     return 'thunderstorms'
-  } else { return x }
+  } else if (type === 'cloudy') {
+    return 'clouds'
+  }  else if (type === 'sunny') {
+    return 'clear'
+  } else if (type === 'windy') {
+    return 'wind'
+  } else if (type === 'foggy') {
+    return 'fog'
+  } else { return type }
 }
 
 ReactDOM.render(<Main source='https://weatherly-api.herokuapp.com/api/weather/'/>, document.getElementById('application'));
