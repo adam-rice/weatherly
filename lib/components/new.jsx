@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 var $ = require('jquery');
 
-// i.replace(/\-/g,' ')...
-
 class Main extends React.Component {
   constructor() {
       super();
@@ -27,8 +25,10 @@ class Main extends React.Component {
   }
 
   findWeather(e) {
-    if (this.state.location) {
-      $.get(this.props.source + this.state.location).then(weatherInfo => {
+    let rawInput = this.state.location;
+    let userInput = rawInput.replace(/\s+/g, '-').toLowerCase();
+    if (userInput) {
+      $.get(this.props.source + userInput).then(weatherInfo => {
           this.setState({weather: weatherInfo.slice(0, 7)});
         });
       }
@@ -38,11 +38,10 @@ class Main extends React.Component {
   render() {
     return(
       <div className='WeatherReport'>
-        <div>
-          <h1 id="logo">weatherly</h1>
-        </div>
+        <h1 id="logo">weatherly</h1>
         <section>
           <input
+            aria-label="search-field, enter a city"
             className="searchInput"
             type='text'
             placeholder='Search'
@@ -56,7 +55,7 @@ class Main extends React.Component {
             }}>
             Get Weather
           </button>
-          <h1>{this.state.location}</h1>
+          <h2>{this.state.location}</h2>
           <WeatherCards weather={this.state.weather} />
         </section>
       </div>
@@ -68,25 +67,29 @@ const WeatherCards = (props) => {
   let { weather } = (props);
   if(!weather) {
     return (
-      <div>Please Enter a Location</div>
+      <section>
+        <div className="welcome">Welcome to Weatherly!</div>
+        <div className="welcome">Let us help you plan your day.</div>
+      </section>
     );
   }
   if (weather.length === 0) {
     return (
       <section>
-        <h3>Valid Locations:</h3>
+        <h3 className="invalid">Valid Locations:</h3>
         <ul>
-          <li>Denver</li>
-          <li>Castle-Rock</li>
-          <li>San-Diego</li>
-          <li>San-Francisco</li>
+          <li className="invalid">Denver</li>
+          <li className="invalid">Castle Rock</li>
+          <li className="invalid">San Diego</li>
+          <li className="invalid">San Fransico</li>
         </ul>
       </section>
     );
   }
   return (
     <div className='Weather-Card'>
-      {weather.map((card) => <div key={card.date}>
+      {weather.map((card) =>
+        <div key={card.date}>
         <Weather {...card} />
       </div>)}
     </div>
@@ -100,12 +103,11 @@ const Weather = (props) => {
   return(
     <div>
       <article className={measureWeather(temp)}>
-        <h5>{date}</h5>
-        <h5>The high will be {temp.high}&#176;</h5>
+        <h5 className="date">{date}</h5>
+        <h5 className="high">The high will be {temp.high}&#176;</h5>
         <h5>The low will be {temp.low}&#176;</h5>
-        {/* <h5>{measureWeather(temp)}</h5> */}
-        <h6 className={thing(weatherType.type)}></h6>
-        <h5>Likelihood of {weatherType.type} is {chance}%</h5>
+        <p className={transformWeatherType(weatherType.type)}></p>
+        <h5>Likelihood of {transformWeatherType(weatherType.type)} is {chance}%</h5>
       </article>
     </div>
   )
@@ -127,10 +129,18 @@ function measureWeather(temp) {
   }
 }
 
-function thing(x) {
-  if (x === 'thunder storms') {
-    return 'thunderstorm'
-  } else { return x }
+function transformWeatherType(type) {
+  if (type === 'thunder storms') {
+    return 'thunderstorms'
+  } else if (type === 'cloudy') {
+    return 'clouds'
+  }  else if (type === 'sunny') {
+    return 'clear'
+  } else if (type === 'windy') {
+    return 'wind'
+  } else if (type === 'foggy') {
+    return 'fog'
+  } else { return type }
 }
 
 ReactDOM.render(<Main source='https://weatherly-api.herokuapp.com/api/weather/'/>, document.getElementById('application'));
