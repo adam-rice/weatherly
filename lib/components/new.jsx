@@ -38,7 +38,10 @@ class Main extends React.Component {
   render() {
     return(
       <div className='WeatherReport'>
-        <h1 id="logo" tabIndex="0" aria-label="Welcome to Weatherly! Let us help you plan your day.">weatherly</h1>
+        <h1 id="logo"
+          tabIndex="0"
+          aria-label="Welcome to Weatherly! Let us help you plan your day.">
+          weatherly</h1>
         <section>
           <input
             aria-label="search-field, enter a city"
@@ -95,7 +98,6 @@ const WeatherCards = (props) => {
     </div>
   )
 };
-
 
 const Weather = (props) => {
   let { location, date, weatherType, temp } = props
