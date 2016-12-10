@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 var $ = require('jquery');
 
-// i.replace(/\-/g,' ')...
-
 class Main extends React.Component {
   constructor() {
       super();
@@ -114,18 +112,18 @@ const Weather = (props) => {
   )
 }
 
-function transformWeatherType(x) {
-  if (x === 'thunder storms') {
+function transformWeatherType(type) {
+  if (type === 'thunder storms') {
     return 'thunderstorms'
-  } else if (x === 'cloudy') {
+  } else if (type === 'cloudy') {
     return 'clouds'
-  }  else if (x === 'sunny') {
+  }  else if (type === 'sunny') {
     return 'clear'
-  } else if (x === 'windy') {
+  } else if (type === 'windy') {
     return 'wind'
-  } else if (x === 'foggy') {
+  } else if (type === 'foggy') {
     return 'fog'
-  } else { return x }
+  } else { return type }
 }
 
 ReactDOM.render(<Main source='https://weatherly-api.herokuapp.com/api/weather/'/>, document.getElementById('application'));
