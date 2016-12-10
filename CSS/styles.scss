@@ -60,9 +60,6 @@ article {
   width: 300px;
 }
 
-.sunny {
-  background-color: $sunny;
-}
 
 h6.sunny{
   height: 40px;
@@ -99,10 +96,18 @@ h6.snow {
   background-image: url('http://icons.wxug.com/i/c/f/snow.gif');
 }
 
-.snow {
-  background-color: $primary-color;
+.hot {
+  background-color: red;
 }
 
-.windy {
-  background-color: $hover-color;
+.warm {
+  background-color: orange;
+}
+
+.cool {
+  background-color: lightBlue;
+}
+
+.cold {
+  background-color: lightGrey;
 }
