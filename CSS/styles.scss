@@ -8,12 +8,13 @@
   margin-top: 50px;
 }
 
-#welcome {
+.welcome {
   color: $hover-color;
   font-family: 'Alegreya', serif;
   font-size: 1.5em;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.3px;
   font-weight: 900;
+  margin: 15px;
 }
 
 .invalid {
@@ -32,7 +33,12 @@ h1, h2 {
 }
 
 h2 {
+  margin-top: 30px;
   color: $border-color;
+}
+
+.high {
+  margin: 25px 0 5px 0;
 }
 
 input {
@@ -57,7 +63,7 @@ button {
   color: $border-color;
   font-size: 1em;
   outline: none;
-  height: 30px;
+  height: 35px;
   width: 140px;
   &:hover {
     background-color: $hover-color;
@@ -74,14 +80,20 @@ article {
   background-color: $thunderstorm;
   color: $border-color;
   border: 4px solid $border-color;
-  height: 100px;
+  height: 150px;
   width: 300px;
+}
+
+.date {
+  float: right;
+  font-weight: 900;
+  font-size: 1.2em;
 }
 
 p.clear, p.thunderstorms, p.fog, p.wind, p.clouds, p.rain, p.snow {
   height: 40px;
   width: 40px;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 
 p.clear {
