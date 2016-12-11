@@ -89,7 +89,7 @@ article, button, input, .invalid {
 }
 
 p.clear, p.thunderstorms, p.fog, p.wind, p.clouds, p.rain, p.snow {
-  @include img(40px, '10px auto');
+  @include img(40px, $img-margin);
 }
 
 p.clear {
