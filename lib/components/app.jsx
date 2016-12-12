@@ -33,6 +33,11 @@ class Main extends React.Component {
         });
       }
     this.persistLastLocation();
+    this.clearSearchField();
+  }
+
+  clearSearchField() {
+    document.querySelector('.search-input').value = '';
   }
 
   render() {
