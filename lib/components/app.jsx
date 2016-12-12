@@ -62,7 +62,7 @@ class Main extends React.Component {
             }}>
             Get Weather
           </button>
-          <h2 tabIndex="0">{this.state.location}</h2>
+          <h2 tabIndex="0">{alertUserToInputLocation(this.state.location)}</h2>
           <WeatherCards weather={this.state.weather} />
         </section>
       </div>
@@ -75,7 +75,7 @@ const WeatherCards = (props) => {
   if(!weather) {
     return (
       <section>
-        <div className="welcome">Welcome to Weatherly!</div>
+        <div className="welcome">welcome to Weatherly!</div>
         <div className="welcome">Let us help you plan your day.</div>
       </section>
     );
@@ -153,6 +153,14 @@ function fixCity(city) {
   if (city === 'san-francisco') {
     return 'san-fransico'
   } else {return city}
+}
+
+function alertUserToInputLocation(location) {
+  if (location === '') {
+    return 'Hello,'
+  } else {
+    document.querySelector('h2').style.textDecoration = "underline";
+    return location}
 }
 
 ReactDOM.render(<Main source='https://weatherly-api.herokuapp.com/api/weather/'/>, document.getElementById('application'));

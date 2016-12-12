@@ -9,7 +9,7 @@ body {
   text-align: center;
 }
 
-h1, h2 {
+h1 {
   color: $logo-color;
   font-size: 4em;
   margin-bottom: 40px;
@@ -17,13 +17,8 @@ h1, h2 {
   text-shadow: -1px 0 $border-color, 0 1px $border-color, 1px 0 $border-color, 0 -1px $border-color;
 }
 
-h2 {
+.welcome, h2 {
   color: $border-color;
-  margin-top: 30px;
-}
-
-.welcome {
-  color: $hover-color;
   font-size: 1.5em;
   letter-spacing: 1.3px;
   margin: 15px;
