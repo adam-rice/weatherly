@@ -73,8 +73,25 @@ article {
   color: $text-color;
   margin: 20px 30px;
   padding: 10px;
-  height: 150px;
-  width: 200px;
+  height: 155px;
+  width: 240px;
+  position: relative;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.severe {
+  background-color: $logo-color;
+  color: $cold;
+  padding: 5px;
+}
+
+.not-severe {
+  display: none;
 }
 
 .date {

@@ -114,6 +114,7 @@ const Weather = (props) => {
         <h5 tabIndex="0">The low will be {temp.low}&#176;</h5>
         <p className={transformWeatherType(weatherType.type)} alt="weather type image"></p>
         <h5 tabIndex="0">Likelihood of {transformWeatherType(weatherType.type)} is {chance}%</h5>
+        <footer><p className={transformScale(weatherType.scale)}>Chance of Severe Weather</p></footer>
       </article>
     </div>
   )
@@ -160,7 +161,14 @@ function locationHeaderCheck(location) {
     return 'Hello,'
   } else {
     document.querySelector('h2').style.textDecoration = "underline";
-    return location}
+    return location
+  }
+}
+
+function transformScale(number) {
+  if (number === 3) {
+    return 'severe'
+  } else {return 'not-severe'}
 }
 
 ReactDOM.render(<Main source='https://weatherly-api.herokuapp.com/api/weather/'/>, document.getElementById('application'));
