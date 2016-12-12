@@ -62,7 +62,7 @@ class Main extends React.Component {
             }}>
             Get Weather
           </button>
-          <h2 tabIndex="0">{alertUserToInputLocation(this.state.location)}</h2>
+          <h2 tabIndex="0">{locationHeaderCheck(this.state.location)}</h2>
           <WeatherCards weather={this.state.weather} />
         </section>
       </div>
@@ -155,7 +155,7 @@ function fixCity(city) {
   } else {return city}
 }
 
-function alertUserToInputLocation(location) {
+function locationHeaderCheck(location) {
   if (location === '') {
     return 'Hello,'
   } else {
