@@ -83,7 +83,7 @@ const WeatherCards = (props) => {
           <li className="invalid" tabIndex="0">Denver</li>
           <li className="invalid" tabIndex="0">Castle Rock</li>
           <li className="invalid" tabIndex="0">San Diego</li>
-          <li className="invalid" tabIndex="0">San Fransico</li>
+          <li className="invalid" tabIndex="0">San Francisco</li>
         </ul>
       </section>
     );
