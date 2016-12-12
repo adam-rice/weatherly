@@ -45,9 +45,9 @@ class Main extends React.Component {
         <section>
           <input
             aria-label="search-field, enter a city"
-            className="searchInput"
+            className="search-input"
             type='text'
-            placeholder='Search'
+            placeholder='enter a location'
             onChange={ (e) => {
               this.handleChange(e);
             }} />
@@ -89,7 +89,7 @@ const WeatherCards = (props) => {
     );
   }
   return (
-    <div className='Weather-Card'>
+    <div className='weather-card'>
       {weather.map((card) =>
         <div key={card.date}>
         <Weather {...card} />
