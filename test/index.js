@@ -1,13 +1,11 @@
-// import React from 'react';
-// import { expect, assert } from 'chai';
-// import { shallow, mount, render } from 'enzyme';
-// import Main from '../lib/components/app';
-//
-// describe('<Main />', () => {
-//
-//   it('calls componentDidMount', () => {
-//     const wrapper = mount(<Main />);
-//     expect(Main.prototype.componentDidMount.calledOnce).to.equal(true);
-//   });
-//
-// });
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { expect, assert } from 'chai';
+import { shallow, mount, render } from 'enzyme';
+import Main from '../lib/components/app.jsx';
+
+describe('Main', () => {
+  it('can mount with no properties', () => {
+    const wrapper = shallow(<Main />);
+  });
+});

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 var $ = require('jquery');
 
-class Main extends React.Component {
+export default class Main extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -170,5 +170,5 @@ function transformScale(number) {
     return 'severe'
   } else {return 'not-severe'}
 }
-
-ReactDOM.render(<Main source='https://weatherly-api.herokuapp.com/api/weather/'/>, document.getElementById('application'));
+//
+// ReactDOM.render(<Main source='https://weatherly-api.herokuapp.com/api/weather/'/>, document.getElementById('application'));

@@ -1,20 +1,14 @@
-require('babel-register')({ presets: ['react', 'es2015'] });
-require('babel-polyfill')
-require('locus')
+require('babel-register')({
+ presets: ["react", "es2015"]
+});
+require('babel-polyfill');
 
 global.document = require('jsdom').jsdom(
-  "<div id='application'></div>"
-)
-global.window = document.defaultView
-global.navigator = window.navigator
+ "<head><meta charset='UTF-8'><div class='application'></div></head>"
+); // the virtual dom this is where our application is rendered.
 
-if (!global.window.localStorage) {
-  localStorage = {
-    getItem() { return '{}'; },
-    setItem() {}
-  }
-}
+global.window = document.defaultView; // if we have to go to the window (Event bubbling, referencing the window)
+global.navigator = window.navigator; // if something is paginated this allows us to go from page to page
 
-if (typeof(exports) !== "undefined"){
-  var $ = require('jquery');
-}
+//global is the window in node
+// using globals are pretty bad and thats why you typically don't see this used.
