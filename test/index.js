@@ -1,14 +1,13 @@
-// var assert = require('chai').assert;
-// var Main = require('../lib/components/app.jsx');
+// import React from 'react';
+// import { expect, assert } from 'chai';
+// import { shallow, mount, render } from 'enzyme';
+// import Main from '../lib/components/app';
 //
-// describe('Main', function() {
+// describe('<Main />', () => {
 //
-//   it('should be a function', function() {
-//     assert.isFunction(Main);
+//   it('calls componentDidMount', () => {
+//     const wrapper = mount(<Main />);
+//     expect(Main.prototype.componentDidMount.calledOnce).to.equal(true);
 //   });
 //
 // });
-import React from 'react';
-import { expect, assert } from 'chai';
-import { shallow, mount, render } from 'enzyme';
-import Main from '../lib/components/app';

@@ -114,7 +114,7 @@ const Weather = (props) => {
         <h5 tabIndex="0">The low will be {temp.low}&#176;</h5>
         <p className={transformWeatherType(weatherType.type)} alt="weather type image"></p>
         <h5 tabIndex="0">Likelihood of {transformWeatherType(weatherType.type)} is {chance}%</h5>
-        <footer><p className={transformScale(weatherType.scale)}>Chance of Severe Weather</p></footer>
+        <footer><p className={transformScale(weatherType.scale)} tabIndex='0'>Chance of Severe Weather</p></footer>
       </article>
     </div>
   )
