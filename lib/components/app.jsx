@@ -33,6 +33,11 @@ class Main extends React.Component {
         });
       }
     this.persistLastLocation();
+    this.clearSearchField();
+  }
+
+  clearSearchField() {
+    document.querySelector('.search-input').value = '';
   }
 
   render() {
@@ -45,9 +50,9 @@ class Main extends React.Component {
         <section>
           <input
             aria-label="search-field, enter a city"
-            className="searchInput"
+            className="search-input"
             type='text'
-            placeholder='Search'
+            placeholder='enter a location'
             onChange={ (e) => {
               this.handleChange(e);
             }} />
@@ -57,7 +62,7 @@ class Main extends React.Component {
             }}>
             Get Weather
           </button>
-          <h2 tabIndex="0">{this.state.location}</h2>
+          <h2 tabIndex="0">{locationHeaderCheck(this.state.location)}</h2>
           <WeatherCards weather={this.state.weather} />
         </section>
       </div>
@@ -70,7 +75,7 @@ const WeatherCards = (props) => {
   if(!weather) {
     return (
       <section>
-        <div className="welcome">Welcome to Weatherly!</div>
+        <div className="welcome">welcome to Weatherly!</div>
         <div className="welcome">Let us help you plan your day.</div>
       </section>
     );
@@ -83,13 +88,13 @@ const WeatherCards = (props) => {
           <li className="invalid" tabIndex="0">Denver</li>
           <li className="invalid" tabIndex="0">Castle Rock</li>
           <li className="invalid" tabIndex="0">San Diego</li>
-          <li className="invalid" tabIndex="0">San Fransico</li>
+          <li className="invalid" tabIndex="0">San Francisco</li>
         </ul>
       </section>
     );
   }
   return (
-    <div className='Weather-Card'>
+    <div className='weather-card'>
       {weather.map((card) =>
         <div key={card.date}>
         <Weather {...card} />
@@ -148,6 +153,14 @@ function fixCity(city) {
   if (city === 'san-francisco') {
     return 'san-fransico'
   } else {return city}
+}
+
+function locationHeaderCheck(location) {
+  if (location === '') {
+    return 'Hello,'
+  } else {
+    document.querySelector('h2').style.textDecoration = "underline";
+    return location}
 }
 
 ReactDOM.render(<Main source='https://weatherly-api.herokuapp.com/api/weather/'/>, document.getElementById('application'));
