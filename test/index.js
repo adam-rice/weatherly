@@ -34,15 +34,15 @@ describe('Main', () => {
   it('should have a render function', () => {
     const wrapper = shallow(<Main />);
     expect(wrapper.find('.WeatherReport')).to.have.length(1);
-  })
-  // 
-  // it('should should take a location', () => {
-  //   const wrapper = shallow(<Main />);
-  //   const input = wrapper.find('.search-input');
-  //   const search = wrapper.find('button');
-  //   input.simulate('change', { target: { value: 'denver' } });
-  //   search.simulate('click');
-  //   // console.log(wrapper.state());
-  //   expect(wrapper.state().location).to.equal('denver');
-  // });
+  });
+
+  it('should should take a location', () => {
+    const wrapper = shallow(<Main />);
+    const input = wrapper.find('.search-input');
+    const search = wrapper.find('button');
+    input.simulate('change', { target: { value: 'denver' } });
+    search.simulate('click');
+    // console.log(wrapper.state());
+    expect(wrapper.state().location).to.equal('denver');
+  });
 });
