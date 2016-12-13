@@ -19,13 +19,25 @@ describe('Main', () => {
     expect(wrapper.state().location).to.equal('');
   });
 
-  it('should should take a location and ', () => {
+  it('should have a const of WeatherCard', () => {
     const wrapper = shallow(<Main />);
-    // const input = wrapper.find('.search-input');
+    const WeatherCards = wrapper.find('WeatherCards');
+    expect(WeatherCards).to.have.length(1);
+  });
+
+  it('should have a const of Weather', () => {
+    const wrapper = shallow(<Main />);
+    const Weather = wrapper.find('Weather');
+    expect(Weather).to.have.length(0);
+  });
+
+  it('should should take a location', () => {
+    const wrapper = shallow(<Main />);
+    const input = wrapper.find('.search-input');
     const search = wrapper.find('button');
-    // input.simulate('onChange', input.target.value='denver');
+    input.simulate('change', { target: { value: 'denver' } });
     search.simulate('click');
-    console.log(wrapper.state());
+    // console.log(wrapper.state());
     expect(wrapper.state().location).to.equal('denver');
   });
 });
