@@ -170,5 +170,3 @@ function transformScale(number) {
     return 'severe'
   } else {return 'not-severe'}
 }
-//
-// ReactDOM.render(<Main source='https://weatherly-api.herokuapp.com/api/weather/'/>, document.getElementById('application'));
